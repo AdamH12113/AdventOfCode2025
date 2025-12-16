@@ -2,6 +2,7 @@
 # so that they can be hashed (stored in sets, etc.).
 from dataclasses import dataclass
 from typing_extensions import Self
+from math import sqrt
 
 # Two-dimensional vector
 @dataclass(frozen = True)
@@ -24,8 +25,13 @@ class Vector:
 	def __rmul__(self, c: int) -> Self:
 		return self * c
 	
-	def __abs__(self) -> int:
+	# Manhattan distance
+	def __len__(self) -> int:
 		return abs(self.x) + abs(self.y)
+	
+	# Euclidean distance
+	def __abs__(self) -> float:
+		return sqrt(self.x**2 + self.y**2)
 
 	def __str__(self) -> str:
 		return f"({self.x},{self.y})"
@@ -64,8 +70,13 @@ class Vector3:
 	def __rmul__(self, c: int) -> Self:
 		return self * c
 	
-	def __abs__(self) -> int:
+	# Manhattan distance
+	def __len__(self) -> int:
 		return abs(self.x) + abs(self.y) + abs(self.z)
+	
+	# Euclidean distance
+	def __abs__(self) -> float:
+		return sqrt(self.x**2 + self.y**2 + self.z**2)
 
 	def __str__(self) -> str:
 		return f"({self.x},{self.y},{self.z})"
