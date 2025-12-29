@@ -1,4 +1,4 @@
-import re, sys, copy, networkx
+import re, sys, copy
 
 # Read the input
 try:
