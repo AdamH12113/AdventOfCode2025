@@ -47,6 +47,14 @@ class Vector:
 
 	def rotate_ccw(self) -> Self:
 		return type(self)(-self.y, self.x)
+	
+	# Vector dot product
+	def dot(self, v: Self) -> int:
+		return self.x*v.x + self.y*v.y
+	
+	# Vector cross product (magnitude only)
+	def cross(self, v: Self) -> int:
+		return self.x*v.y - v.x*self.y
 
 # Three-dimensional vector
 @dataclass(frozen = True)
@@ -86,6 +94,14 @@ class Vector3:
 
 	def in_range_sq(self, size):
 		return self.in_range(0, size - 1, 0, size - 1, 0, size - 1)
+
+	# Vector dot product
+	def dot(self, v: Self) -> int:
+		return self.x*v.x + self.y*v.y + self.z*v.z
+	
+	# Vector cross product
+	def cross(self, v: Self) -> Self:
+		return type(self)(self.y*v.z - self.z*v.y, self.z*v.x - self.x*v.z, self.x*v.y - v.x*self.y)
 
 
 # Helpful constants
